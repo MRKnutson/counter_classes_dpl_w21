@@ -30,6 +30,7 @@ class CounterClass extends React.Component {
     console.log("constructor called");
     // setup initial state
     this.state = { count: 0 };
+    // this.add = this.add.bind(this);
   }
   add = () => {
     console.log("add called");
@@ -39,6 +40,15 @@ class CounterClass extends React.Component {
       count: this.state.count + 1,
     });
   };
+  // add() {
+  //   console.log("add called");
+  //   // when you call this method it changes
+  //   // and re calls the render function
+  //   console.log(this);
+  //   this.setState({
+  //     count: this.state.count + 1,
+  //   });
+  // }
   render() {
     console.log("render called");
     return (
