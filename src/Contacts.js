@@ -4,7 +4,9 @@ import Contact from "./Contact";
 
 class Contacts extends React.Component {
   renderContacts = () => {
-    return this.props.contacts.map((c) => <Contact {...c} />);
+    return this.props.contacts.map((c) => (
+      <Contact deleteContact={this.props.deleteContact} {...c} />
+    ));
   };
   render() {
     return (

@@ -1,6 +1,7 @@
 import React from "react";
-import { Container } from "semantic-ui-react";
+import { Container, Divider } from "semantic-ui-react";
 import "./App.css";
+import ContactForm from "./ContactForm";
 import Contacts from "./Contacts";
 import SemanticDemo from "./SemanticDemo";
 // import CounterFunc from "./CounterFunc";
@@ -15,6 +16,20 @@ class App extends React.Component {
     ],
   };
 
+  addContact = (contact) => {
+    const newContants = [contact, ...this.state.contacts];
+    this.setState({
+      contacts: newContants,
+    });
+  };
+
+  deleteContact = (id) => {
+    const filteredContacts = this.state.contacts.filter((c) => c.id !== id);
+    this.setState({
+      contacts: filteredContacts,
+    });
+  };
+
   // one way to create initial state
   // constructor(props){
   //   super(props)
@@ -22,9 +37,14 @@ class App extends React.Component {
   // }
   render() {
     return (
-      <Container>
+      <Container style={{ marginTop: "20px" }}>
         {/* <SemanticDemo /> */}
-        <Contacts contacts={this.state.contacts} />
+        <ContactForm addContact={this.addContact} />
+        <Divider />
+        <Contacts
+          contacts={this.state.contacts}
+          deleteContact={this.deleteContact}
+        />
       </Container>
     );
   }
